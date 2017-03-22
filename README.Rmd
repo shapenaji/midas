@@ -1,0 +1,127 @@
+---
+title: "The `midas` Touch"
+author: "Nicholas Jhirad"
+params:
+  version: "0.2.0"
+output:
+  html_document:
+    keep_md: TRUE
+    highlight: null
+    mathjax: null
+    toc: true
+    theme: yeti
+    fold: TRUE
+    toc_float:
+      collapsed: FALSE
+      smooth_scroll: true
+---
+
+```{r include=FALSE}
+local({
+  hi_pandoc = function(code) {
+    if (knitr:::pandoc_to() != 'latex') return(code)
+    if (packageVersion('highr') < '0.6.1') stop('highr >= 0.6.1 is required')
+    res = highr::hi_latex(code, markup = highr:::cmd_pandoc_latex)
+    sprintf('\\texttt{%s}', res)
+  }
+  hook_inline = knitr::knit_hooks$get('inline')
+  knitr::knit_hooks$set(inline = function(x) {
+    if (is.character(x) && inherits(x, 'AsIs')) hi_pandoc(x) else hook_inline(x)
+  })
+})
+```
+
+## The midas package
+
+This document covers version >= `r params$version` of the package and is intended to be an  
+introduction to the package, 
+
+The `midas` package turns html code that you can find
+around the internet into the necessary shiny functions that 
+would generate the equivalent shiny objects
+
+## Package Details
+
+The package depends on:
+ 
+ * `xml2` parses html
+ * `shiny` supports the shiny-object class and the `tag` function
+
+## Why Convert HTML?
+
+Shiny is best when it lets us take what we see elsewhere and reproduce it in a fraction of the time attached to some great data-analysis.
+
+I found myself with the following workflow:
+
+```{r ConvertingHtml, message=FALSE}
+
+# Copy an existing widget or html object
+# Either from the web or from an existing function
+library(shiny)
+library(shinydashboard)
+
+cat(as.character(dashboardHeader()), fill = TRUE)
+
+# Reproduce and Modify
+logoHeader <- function(href = '#',
+                       logosrc = 'logo.png',
+                       loadersrc = 'loader.gif',
+                       height='78%',
+                       width='78%',
+                       navbar = NULL) {
+    tagList(
+        tags$head(
+            tags$script(
+                "setInterval(function(){
+            if ($('html').attr('class')=='shiny-busy') {
+              $('div.busy').show();
+              $('div.notbusy').hide();
+            } else {
+          $('div.busy').hide();
+          $('div.notbusy').show();
+        }
+      },100)")
+        ),
+      tags$header(
+          class = 'main-header',
+          tags$span(
+              class = 'logo',
+              tags$a(href='#', class = 'logo',
+                     tags$div(
+                         class = 'busy',
+                         tags$img(src = loadersrc,
+                                  height = height,
+                                  width = width)
+                     ),
+                     tags$div(
+                         class = 'notbusy',
+                         tags$img(src = logosrc,
+                                  height = height,
+                                  width = width)
+                     )
+              )
+          ),
+          navbar
+          
+      )
+    )
+}
+
+```
+
+But for giant pages, this involved a considerable amount of transcription of things like: `<div class="example"></div>` into `tags$div(class="example")`.
+
+I felt that this should be programmatic.
+
+## Converting HTML with midas
+
+Let's try this with midas!
+
+Here's some HTML I found on the internet:
+
+```{r midas_example}
+# Let's Try this with midas!
+library(midas)
+
+
+```

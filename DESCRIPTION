@@ -1,0 +1,18 @@
+Package: midas
+Type: Package
+Title: Functions/Tools for Empowering Shiny
+Version: 0.1.0
+Author: Nicholas Jhirad 
+Maintainer: Nicholas Jhirad <lostnfound@gmail.com>
+Description: Contains functions for converting existing HTML
+   functionality into shiny.
+Depends:
+   shiny,
+   xml2
+Imports:
+   shiny,
+   xml2
+License: GPL-3
+LazyData: true
+Encoding: UTF-8
+RoxygenNote: 5.0.1
