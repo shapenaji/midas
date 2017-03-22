@@ -1,39 +1,11 @@
----
-title: "The `midas` Touch"
-author: "Nicholas Jhirad"
-params:
-  version: "0.2.0"
-output:
-  html_document:
-    keep_md: TRUE
-    highlight: null
-    mathjax: null
-    toc: true
-    theme: yeti
-    fold: TRUE
-    toc_float:
-      collapsed: FALSE
-      smooth_scroll: true
----
+# The `midas` Touch
+Nicholas Jhirad  
 
-```{r include=FALSE}
-local({
-  hi_pandoc = function(code) {
-    if (knitr:::pandoc_to() != 'latex') return(code)
-    if (packageVersion('highr') < '0.6.1') stop('highr >= 0.6.1 is required')
-    res = highr::hi_latex(code, markup = highr:::cmd_pandoc_latex)
-    sprintf('\\texttt{%s}', res)
-  }
-  hook_inline = knitr::knit_hooks$get('inline')
-  knitr::knit_hooks$set(inline = function(x) {
-    if (is.character(x) && inherits(x, 'AsIs')) hi_pandoc(x) else hook_inline(x)
-  })
-})
-```
+
 
 ## The midas package
 
-This document covers version >= `r params$version` of the package and is intended to be an  
+This document covers version >= 0.2.0 of the package and is intended to be an  
 introduction to the package, 
 
 The `midas` package turns html code that you can find
@@ -53,15 +25,34 @@ Shiny is best when it lets us take what we see elsewhere and reproduce it in a f
 
 I found myself with the following workflow:
 
-```{r ConvertingHtml, message=FALSE}
 
+```r
 # Copy an existing widget or html object
 # Either from the web or from an existing function
 library(shiny)
 library(shinydashboard)
 
 cat(as.character(dashboardHeader()), fill = TRUE)
+```
 
+```
+## <header class="main-header">
+##   <span class="logo"></span>
+##   <nav class="navbar navbar-static-top" role="navigation">
+##     <span style="display:none;">
+##       <i class="fa fa-bars"></i>
+##     </span>
+##     <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+##       <span class="sr-only">Toggle navigation</span>
+##     </a>
+##     <div class="navbar-custom-menu">
+##       <ul class="nav navbar-nav"></ul>
+##     </div>
+##   </nav>
+## </header>
+```
+
+```r
 # Reproduce and Modify
 logoHeader <- function(href = '#',
                        logosrc = 'logo.png',
@@ -106,7 +97,6 @@ logoHeader <- function(href = '#',
       )
     )
 }
-
 ```
 
 But for giant pages, this involved a considerable amount of transcription of things like: `<div class="example"></div>` into `tags$div(class="example")`.
@@ -119,10 +109,17 @@ Let's try this with midas!
 
 Here's some HTML I found on the internet:
 
-```{r midas_example}
+
+```r
 # Let's Try this with midas!
 library(midas)
+```
 
+```
+## Loading required package: xml2
+```
+
+```r
 html <- 
 '<html>
 <head>
@@ -142,5 +139,11 @@ html <-
 </html>'
 
 print(turn_shiny(html))
+```
 
+```
+## tag("html", list(tag("head", list(tag("style", list("#p01 {    color: blue;}")))), 
+##     tag("body", list(tag("p", list("This is a paragraph.")), 
+##         tag("p", list("This is a paragraph.")), tag("p", list(
+##             id = "p01", "I am different."))))))
 ```

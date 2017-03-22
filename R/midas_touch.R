@@ -13,6 +13,8 @@
 html_to_list <- function(x) {
     xdoc <- xml2::read_html(x)
     page <- xml2::as_list(xdoc)
+    if(length(page) > 1)
+        page <- list(html = page)
     page
 }
 
