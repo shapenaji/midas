@@ -1,12 +1,12 @@
 Package: midas
 Type: Package
 Title: Turn HTML Shiny
-Version: 1.0.0
+Version: 1.0.1
 Author: Nicholas Jhirad 
 Maintainer: Nicholas Jhirad <lostnfound@gmail.com>
-Description: Contains functions for converting existing HTML/JS
-   source into equivalent shiny functions. Bootstraps the process of making
-   new shiny functions by allowing us to turn HTML snippets directly into 
+Description: Contains functions for converting existing HTML/JavaScript
+   source into equivalent 'shiny' functions. Bootstraps the process of making
+   new 'shiny' functions by allowing us to turn HTML snippets directly into 
    R functions.
 Imports:
    shiny (>= 1.0.3),
