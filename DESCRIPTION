@@ -1,18 +1,18 @@
 Package: midas
 Type: Package
-Title: Functions/Tools for Empowering Shiny
-Version: 0.2.0
+Title: Turn HTML Shiny
+Version: 1.0.0
 Author: Nicholas Jhirad 
 Maintainer: Nicholas Jhirad <lostnfound@gmail.com>
-Description: Contains functions for converting existing HTML
-   functionality into shiny.
-Depends:
-   shiny,
-   xml2
+Description: Contains functions for converting existing HTML/JS
+   source into equivalent shiny functions. Bootstraps the process of making
+   new shiny functions by allowing us to turn HTML snippets directly into 
+   R functions.
 Imports:
-   shiny,
-   xml2
+   shiny (>= 1.0.3),
+   xml2 (>= 1.1.1)
+BugReports: https://github.com/shapenaji/midas/issues
 License: GPL-3
 LazyData: true
 Encoding: UTF-8
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1

@@ -17,10 +17,3 @@ a function call that produces the equivalent shiny objects
 \description{
 turns an xml2 list into a shiny function call
 }
-\examples{
-html <- '<div class="example"><h3>test</h3></div>'
-html_list <- html_to_list(html)
-gold <- midas_touch(html_list)
-eval(gold)
-}
-

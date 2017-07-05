@@ -4,12 +4,14 @@
 \alias{turn_shiny}
 \title{Turns a string of html into the equivalent shiny code}
 \usage{
-turn_shiny(html, remove_newlines = TRUE)
+turn_shiny(html, remove_newlines = TRUE, file = NULL)
 }
 \arguments{
 \item{html}{a string of complete html}
 
 \item{remove_newlines}{whether or not to remove newlines from the string}
+
+\item{file}{default (NULL) is to return the object, if this is set it will write to file}
 }
 \value{
 a function call that produces the equivalent shiny objects
@@ -22,4 +24,3 @@ html <- '<div class="example"><h3>test</h3></div>'
 turn_shiny(html)
 eval(turn_shiny(html))
 }
-

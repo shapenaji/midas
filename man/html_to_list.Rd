@@ -20,4 +20,3 @@ Uses xml2 to parse html text into a list
 html <- '<div class="example"><h3>test</h3></div>'
 html_to_list(html)
 }
-

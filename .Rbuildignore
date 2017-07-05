@@ -1,6 +1,5 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
-css/
 \.gitignore
 \.git/
 ^README
