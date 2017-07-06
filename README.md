@@ -1,6 +1,8 @@
 # The `midas` Touch
 Nicholas Jhirad  
 
+[![CRAN Status Badge](https://www.r-pkg.org/badges/version/midas)](https://cran.r-project.org/package=midas) [![CRAN Total Downloads](http://cranlogs.r-pkg.org/badges/grand-total/midas)](https://cran.r-project.org/package=midas) [![CRAN Monthly Downloads](http://cranlogs.r-pkg.org/badges/midas)](https://cran.r-project.org/package=midas)
+
 
 
 ## The midas package
@@ -113,13 +115,7 @@ Here's some HTML I found on the internet:
 ```r
 # Let's Try this with midas!
 library(midas)
-```
 
-```
-## Loading required package: xml2
-```
-
-```r
 html <- 
 '<html>
 <head>
@@ -142,8 +138,6 @@ print(turn_shiny(html))
 ```
 
 ```
-## tag("html", list(tag("head", list(tag("style", list("#p01 {    color: blue;}")))), 
-##     tag("body", list(tag("p", list("This is a paragraph.")), 
-##         tag("p", list("This is a paragraph.")), tag("p", list(
-##             id = "p01", "I am different."))))))
+## tag("html", list(tag("head", list(tag("style", list("#p01 {    color: blue;}")))), tag("body", list(tag("p", list("This is a paragraph.")), tag("p", list("This is a paragraph.")), tag("p", list(id = "p01", "I am different."))))))
+## [1] "tag(\"html\", list(tag(\"head\", list(tag(\"style\", list(\"#p01 {    color: blue;}\")))), tag(\"body\", list(tag(\"p\", list(\"This is a paragraph.\")), tag(\"p\", list(\"This is a paragraph.\")), tag(\"p\", list(id = \"p01\", \"I am different.\"))))))"
 ```

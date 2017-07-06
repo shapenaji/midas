@@ -16,6 +16,8 @@ output:
       smooth_scroll: true
 ---
 
+[![CRAN Status Badge](https://www.r-pkg.org/badges/version/midas)](https://cran.r-project.org/package=midas) [![CRAN Total Downloads](http://cranlogs.r-pkg.org/badges/grand-total/midas)](https://cran.r-project.org/package=midas) [![CRAN Monthly Downloads](http://cranlogs.r-pkg.org/badges/midas)](https://cran.r-project.org/package=midas)
+
 ```{r include=FALSE}
 local({
   hi_pandoc = function(code) {

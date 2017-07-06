@@ -1,6 +1,7 @@
 #' Uses xml2 to parse html text into a list
 #'
 #' @param x string of html
+#' @param ... additional arguments passed to xml2::read_html
 #'
 #' @return html as an R list
 #' @export
@@ -10,10 +11,10 @@
 #' # create some test data
 #' html <- '<div class="example"><h3>test</h3></div>'
 #' html_to_list(html)
-html_to_list <- function(x) {
-    xdoc <- xml2::read_html(x)
+html_to_list <- function(x, ...) {
+    xdoc <- xml2::read_html(x, ...)
     page <- xml2::as_list(xdoc)
-    if(length(page) > 1)
+    if (length(page) > 1)
         page <- list(html = page)
     page
 }
@@ -65,6 +66,7 @@ midas_touch <- function(root) {
 #' @param html a string of complete html
 #' @param remove_newlines whether or not to remove newlines from the string
 #' @param file default (NULL) is to return the object, if this is set it will write to file
+#' @param ... additional arguments passed to xml2::read_html
 #'
 #' @return a function call that produces the equivalent shiny objects
 #' @export
@@ -83,7 +85,7 @@ turn_shiny <-
     function(
         html,
         remove_newlines = TRUE,
-        file = NULL
+        file = NULL,...
     ) {
     if (remove_newlines)
         html <- gsub('\n', '', html)
