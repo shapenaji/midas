@@ -1,0 +1,11 @@
+midas v1.1.0 (Release date: 2016-07-06)
+==============
+
+Changes:
+* adding `...` to functions to pass values down to `xml2::read_html`
+
+midas v1.0.1 (Release date: 2016-07-05)
+==============
+
+Changes:
+* All, CRAN Release
